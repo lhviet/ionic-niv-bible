@@ -1,0 +1,62 @@
+
+<ion-view title="{{pageName}}" ng-init="loadHighlights()">
+
+  <ion-content class="font-small" padding="false" has-bouncing="true">
+    <ion-list class="zebra-list" ng-if="isRecentHighlight==true">
+      <ion-item menu-close ng-repeat="highlight in highlights track by $index" class="full-text">
+
+        <table>
+
+          <tr>
+            <td class="verse_text" style="font-weight:700;">
+              {{getBookname(highlight.book_number)}} {{highlight.chapter}}:{{highlight.verse}}
+            </td>
+          </tr>
+
+          <tr>
+            </td>
+            <td ng-bind-html="highlight.text" class="verse_text background-highlight" style="font-size:16px;line-height:18px;">
+            </td>
+          </tr>
+
+        </table>
+
+      </ion-item>
+
+      <ion-item menu-close ng-if="isLoadMore==true" on-tap="loadHighlights()">
+        Load more...
+      </ion-item>
+
+    </ion-list>
+    <ion-list class="zebra-list" ng-if="isRecentHighlight==false">
+      <ion-item menu-close class="full-text"
+                ng-repeat="(verse, value) in selectedBook.verses track by $index"
+                ng-class="selectedBook.highlights.indexOf(verse)>-1?'background-highlight':''">
+
+        <table>
+
+          <tr ng-if="value.title">
+            <td class="verse_number"></td>
+            <td  ng-bind-html="value.title" class="verse_text" style="font-size:16px;line-height:18px;font-weight:700;color:#2c9a33;"></td>
+          </tr>
+
+          <tr>
+
+            <td class="verse_number">{{verse}}</td>
+
+            <td>
+
+              <span ng-bind-html="value.text" class="verse_text" style="font-size:16px;line-height:18px;"></span>
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+
+</ion-view>

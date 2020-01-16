@@ -1,0 +1,68 @@
+<ion-view view-title="{{selectedBook.name}} {{selectedBook.chapter}} - {{getObjLength(selectedBook.verses)}}v" align-title="left">
+
+  <div ng-if="isFullReading==false">
+
+    <div id="id_next" class="float-button" style="top:initial;bottom:5px;" ng-if="isShowNext">
+      <span class="height-fix">
+        <a class="content color-light-grey" on-tap="nextChapter()">
+          <i class="ion-chevron-right"> </i>
+        </a>
+      </span>
+    </div>
+    <div id="id_prev" class="float-button" style="top:initial;bottom:5px;right:inherit;left:5px;" ng-if="isShowPrev">
+      <span class="height-fix">
+        <a class="content color-light-grey" on-tap="prevChapter()">
+          <i class="ion-chevron-left"> </i>
+        </a>
+      </span>
+    </div>
+
+    <div class="float-button" style="top:initial;bottom:5px;right:55px;">
+      <span class="height-fix">
+        <a class="content color-light-grey" on-tap="openHistory($event)">
+          <i class="ion-ios-skipbackward-outline"></i>
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <button ng-if="isCopyMode==true" on-tap="copySelectedVerses()" class="button button-positive" style="z-index:9999;position:fixed;top:initial;bottom:100px;right:5px;">
+    Copy
+  </button>
+
+  <ion-content class="font-small" padding="false" has-bouncing="true">
+    <ion-list class="zebra-list">
+      <ion-item menu-close ng-repeat="(verse, value) in selectedBook.verses track by $index" class="full-text"
+                ng-class="{'background-highlight' : selectedBook.highlights.indexOf(verse)>-1,
+                'copy-highlight' : highlight_copies.indexOf(selectedBook.number + '_' + selectedBook.chapter + '_' + verse)>-1}"
+                on-tap="onTapVerse(verse,value)">
+
+
+        <table>
+
+          <tr ng-if="value.title">
+            <td class="verse_number"></td>
+            <td  ng-bind-html="value.title" class="verse_text" style="font-size:16px;line-height:18px;font-weight:700;color:#2c9a33;"></td>
+          </tr>
+
+          <tr>
+
+            <td class="verse_number">{{verse}}</td>
+
+            <td>
+
+              <span ng-bind-html="value.text" class="verse_text" style="font-size:16px;line-height:18px;"></span>
+
+            </td>
+
+          </tr>
+
+        </table>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

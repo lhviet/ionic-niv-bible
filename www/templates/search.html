@@ -1,0 +1,43 @@
+<ion-view title="Search">
+
+  <ion-header-bar class="bar-subheader item-input item-search background-highlight">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" placeholder="Search...at least 3 letters" ng-model="searchText" ng-change="searchVerse()">
+    <span class="clear-search" on-tap="searchText=''">
+      <i class="icon ion-android-close"></i>
+    </span>
+  </ion-header-bar>
+
+  <ion-content class="font-small" padding="false" has-bouncing="true">
+
+    <ion-list class="zebra-list">
+      <ion-item menu-close class="full-text" ng-repeat="verse in verses track by $index"
+                on-tap="openBookChapter(verse)">
+
+        <table>
+
+          <tr>
+            <td class="verse_number"></td>
+            <td class="verse_text font-normal" style="font-weight:700;">
+              {{verse.book_name}} {{verse.chapter}} - {{verse.book_number<470?'Old Testament':'New Testament'}}
+            </td>
+          </tr>
+
+          <tr>
+
+            <td class="verse_number">{{verse.verse}}</td>
+
+            <td ng-bind-html="verse.text" class="verse_text font-normal">
+            </td>
+
+          </tr>
+
+        </table>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

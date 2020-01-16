@@ -1,0 +1,167 @@
+/* Empty. Add your own CSS if you like */
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+.item-search .icon {
+  font-size: 24px;
+}
+.item-search .clear-search {
+  width: 44px;
+  text-align: center;
+  padding: 10px;
+}
+.full-text{
+  white-space: initial;
+  padding: 5px;
+}
+.background-highlight{
+  font-weight:500;
+  background-color: rgb(250, 252, 173) !important;
+}
+.copy-highlight{
+  font-weight:300;
+  background-color: rgba(56, 133, 255, 0.26) !important;
+}
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+.background-grey{
+  background-color: #DBDBDB !important;
+}
+.custom-list-item .item-complex .item-content {
+  /* remove background-color from the original default css */
+  background-color: inherit;
+  padding: 15px;
+}
+
+.verse_number{
+  width: 30px;
+  text-align: center;
+  vertical-align: middle;
+  border-right: solid 1px white;
+}
+.zebra-list ion-item:nth-child(odd){
+  background-color: white;
+}
+.zebra-list ion-item:nth-child(even){
+  background-color: #f8f7f7;
+}
+.verse_text{
+  padding: 3px 5px;
+}
+/* Floating function buttons */
+.float-button {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 20px;
+  padding: 20px;
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.09);
+  position: fixed;
+  top: 50px; /* Adjust to where you want it */
+  right: 5px; /* Adjust to where you want it */
+  z-index: 9999;
+}
+.float-button .height_fix {
+  margin-top: 100%;
+}
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -15px; /* Note, this must be half the font size */
+}
+.font-normal{
+  font-size: 16px !important;
+  line-height: 18px;
+}
+.font-small{
+  font-size: 14px !important;
+  line-height: 16px;
+}
+.font-smaller{
+  font-size: 12px !important;
+  line-height: 14px;
+}
+.secondary-text{
+  color: rgba(0, 122, 255, 0.69);
+  font-style: italic;
+}
+/* First column = book */
+.leftside-book{
+  position:absolute;
+  top:0px;
+  right:30%;
+  left:0;
+  bottom:0;
+  margin-right: 0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  border-right:solid 1px #aeaeae;
+}
+.leftside-book .book-item{
+  background:transparent;
+}
+.rightside-chapter{
+  position:absolute;
+  top:0px;
+  right:0;
+  bottom:0;
+  width:30%;
+  text-align:center;
+  overflow-y:auto;
+  overflow-x:hidden;
+  background: rgba(0, 122, 255, 0.2);
+}
+.rightside-chapter.book{
+  top:54px;
+}
+.rightside-chapter.chapter{
+  top:0px;
+}
+.rightside-chapter .chapter-title{
+  font-size:14px;
+}
+.rightside-chapter .chapter-item{
+  background:transparent;
+  border-color: #A8A8A8;
+}
+.color-selected{
+  color: #589ffa;
+}
+.color-grey{
+  color: darkgray;
+}
+.color-light-grey{
+  color: rgba(169, 169, 169, 0.81);
+}
+
+.second-right-icon{
+  margin-right: 42px;
+}
+/* Adapt css from biblegateway.com */
+.woj{
+  color: rgba(255, 0, 0, 0.4);
+}
+.catch-word{
+
+}
+.verse_speaker{
+  font-weight: 600;
+  color: rgba(0, 0, 66, 0.59);
+  line-height: 2;
+}

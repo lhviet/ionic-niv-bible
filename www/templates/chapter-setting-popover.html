@@ -1,0 +1,22 @@
+
+<ion-popover-view>
+  <ion-header-bar>
+    <h1 class="title">Configuration</h1>
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-toggle ng-model="isFullReading" toggle-class="toggle-calm" on-tap="toggleSetting()">Full Reading</ion-toggle>
+
+    <ion-item menu-close class="item-icon-right">
+      Text Size
+      <i class="icon ion-ios-plus-outline" ng-if="isShowZoomIn" on-tap="increaseFontSize()"></i>
+      <i class="icon ion-ios-minus-outline" ng-if="isShowZoomOut" on-tap="decreaseFontSize()" style="right:40px;"></i>
+    </ion-item>
+
+    <ion-item menu-close class="item-icon-right" on-tap="toggleCopyMode()">
+      Copy Verse
+      <i class="icon ion-ios-copy" ng-class="isCopyMode?'color-selected':'color-grey'"></i>
+    </ion-item>
+
+  </ion-content>
+</ion-popover-view>

@@ -1,0 +1,76 @@
+
+<ion-side-menus enable-menu-with-back-views="false" ng-init="initHighlightMenu()">
+  <ion-side-menu-content>
+
+    <ion-nav-bar class="bar-dark">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-ios-arrow-back" ui-sref="app.books" on-tap="initBookPage()">
+        </button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
+        </button>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right">
+    <ion-header-bar class="bar-royal">
+      <h1 class="title">Highlighted Books</h1>
+    </ion-header-bar>
+    <ion-header-bar style="padding:12px;" class="bar-subheader bar-stable item-icon-right" on-tap="selectBook(0)">
+      <span style="font-size:16px;font-weight:700;padding:5px;">
+        Recent Highlights
+      </span>
+      <i class="icon ion-clock"></i>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" scroll='false'>
+      <div class="leftside-book">
+        <ion-item class="item-icon-right font-small item-royal" on-tap="toggleGroup(oldNewGroup,0)">
+          Old Testament
+          <i class="icon" ng-class="isGroupShown(oldNewGroup,0) ? 'ion-minus' : 'ion-plus'"></i>
+        </ion-item>
+        <ion-item on-tap="selectBook(book_number)"
+                  ng-repeat="(book_number,book) in oldBookFiltered = (books.oldTestament | objectByKeyValFilter:'name':searchText) track by $index"
+                  id="oldbookchapter_{{book_number}}" ng-show="isGroupShown(oldNewGroup,0)"
+                  ng-class="book_number==selectedBook.number?'item-assertive':'book-item'">
+          <span class="font-smaller">{{$index+1}}. </span>
+          <b>{{book.name}}</b>
+        </ion-item>
+        <ion-item class="item-icon-right font-small item-royal" on-tap="toggleGroup(oldNewGroup,1)">
+          New Testament
+          <i class="icon" ng-class="isGroupShown(oldNewGroup,1) ? 'ion-minus' : 'ion-plus'"></i>
+        </ion-item>
+        <ion-item on-tap="selectBook(book_number)"
+                  ng-repeat="(book_number,book) in newBookFiltered = (books.newTestament | objectByKeyValFilter:'name':searchText) track by $index"
+                  id="newbookchapter_{{book_number}}" ng-show="isGroupShown(oldNewGroup,1)"
+                  ng-class="book_number==selectedBook.number?'item-assertive':'book-item'">
+          <span class="font-smaller">{{$index+1}}. </span>
+          <b>{{book.name}}</b>
+        </ion-item>
+      </div>
+      <div class="rightside-chapter">
+        <ion-item class="chapter-title font-smaller">
+          <b>Chapter</b>
+        </ion-item>
+        <div class="chapter-list custom-list-item">
+          <ion-item menu-close style="height:50px;text-align:center;"
+                    ng-repeat="chapter in selectedBook.chapters track by $index"
+                    ng-class="chapter==selectedBook.chapter?'item-assertive':'chapter-item'"
+                    on-tap="changeChapter(chapter)"
+                    id="chapter_{{chapter}}">
+            {{chapter}}
+          </ion-item>
+        </div>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
